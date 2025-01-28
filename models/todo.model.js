@@ -7,11 +7,12 @@ const Mongoose = require("mongoose");
 const todoSchema = Mongoose.Schema({
     title: {
         type: String,
-        required: [true, "Du måste ange en titel"]
+        required: [true, "Du måste ange en titel"],
+        minlength: [3, "Titeln måste vara minst 3 tecken"]
     },
     description: {
         type: String,
-        maxlength: [250, "Beskrivningen får max vara 250 tecken"],
+        maxlength: [200, "Beskrivningen får max vara 200 tecken"],
         required: false,
     },
     status: {
