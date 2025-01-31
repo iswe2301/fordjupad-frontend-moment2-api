@@ -8,8 +8,12 @@ exports.getAllTodos = async (request, h) => {
     try {
         // Hämta alla todos från databasen
         const todos = await Todo.find();
+        // Kontrollerar om det finns todos
         if (todos.length === 0) {
-            return h.response("Inga todos hittades").code(404);
+            return h.response({
+                message: "Inga todos hittades", // Meddelande om att inga todos hittades
+                todos: [] // Returnerar en tom array
+            }).code(200);
         }
         // Returnera todos med statuskod 200
         return h.response(todos).code(200);
